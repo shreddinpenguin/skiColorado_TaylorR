@@ -1,0 +1,100 @@
+{
+    "Ski Resorts": [
+      {
+        "id": 1,
+        "name": "Keystone",
+        "avgSnow": 214,
+        "pass": "epic",
+        "parks": 6,
+        "lifts": 20
+      },
+      {
+        "id": 2,
+        "name": "Breckenridge",
+        "avgSnow": 303,
+        "pass": "epic",
+        "parks": 5,
+        "lifts": 35
+      },
+      {
+        "id": 3,
+        "name": "Vail",
+        "avgSnow": 252,
+        "pass": "epic",
+        "parks": 2,
+        "lifts": 31
+      },
+      {
+        "id": 4,
+        "name": "Beaver Creek",
+        "avgSnow": 236,
+        "pass": "epic",
+        "parks": 4,
+        "lifts": 26
+      },
+      {
+        "id": 5,
+        "name": "Crested Butte",
+        "avgSnow": 209,
+        "pass": "epic",
+        "parks": 2,
+        "lifts": 14
+      },
+      {
+        "id": 6,
+        "name": "Telluride",
+        "avgSnow": 217,
+        "pass": "epic",
+        "parks": 3,
+        "lifts": 19
+      },
+      {
+        "id": 7,
+        "name": "Steamboat",
+        "avgSnow": 286,
+        "pass": "ikon",
+        "parks": 4,
+        "lifts": 21
+      },
+      {
+        "id": 9,
+        "name": "Copper Mountain",
+        "avgSnow": 242,
+        "pass": "ikon",
+        "parks": 7,
+        "lifts": 24
+      },
+      {
+        "id": 10,
+        "name": "Aspen Snowmass",
+        "avgSnow": 307,
+        "pass": "ikon",
+        "parks": 3,
+        "lifts": 21
+      },
+      {
+        "id": 11,
+        "name": "Winter Park",
+        "avgSnow": 319,
+        "pass": "ikon",
+        "parks": 7,
+        "lifts": 23
+      },
+      {
+        "id": 12,
+        "name": "Eldora Mountain",
+        "avgSnow": 199,
+        "pass": "ikon",
+        "parks": 4,
+        "lifts": 10
+      },
+      {
+        "id": 13,
+        "name": "Arapahoe Basin",
+        "avgSnow": 278,
+        "pass": "ikon",
+        "parks": 2,
+        "lifts": 9
+      }
+    ]
+}
