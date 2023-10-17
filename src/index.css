@@ -16,7 +16,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: rgba(255, 255, 255, 0.87);
   text-decoration: inherit;
 }
 a:hover {
@@ -36,7 +36,28 @@ h1 {
   line-height: 1.1;
 }
 
+select:hover {
+  border-color: #646cff;
+  color: #535bf2
+}
+
+select {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.87);
+  text-decoration: inherit;
+}
+
 button {
+  justify-content: center;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -50,10 +71,10 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+}  */
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -63,7 +84,63 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+.cards {
+  list-style: none;
+}
+
+.card {
+  margin: 1rem;
+}
+
+.card img {
+  height: 150px;
+  width: 100%;
+}
+
+.card button {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
   }
+
+  .card {
+    width: calc(33% - 2rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: calc(25% - 2rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .card {
+    width: calc(20% - 2rem);
+  }
+}
+
+p {
+  font-family: inherit
+}
+
+h4 {
+  font-family: inherit;
+}
+
+header h1 {
+  font-size: 80px;
+  text-align: center;
+}
+
+.navHead {
+  margin-top: 10px;
+  justify-content: center;
+  display: flex;
 }
