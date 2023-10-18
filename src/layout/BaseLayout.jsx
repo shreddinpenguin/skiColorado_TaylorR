@@ -1,13 +1,13 @@
-import { NavLink, Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 
 
-function BaseLayout({ allResorts, setIsSort }) {
+function BaseLayout({ setIsSort }) {
   return (
     <div>
         <header>
             <h1>Ski Colorado</h1>
-            <NavBar setIsSort={setIsSort} allResorts={allResorts}/>
+            <NavBar setIsSort={setIsSort} />
         </header>
         <main>
             <Outlet />

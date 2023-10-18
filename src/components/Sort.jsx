@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function Sort({ allResorts, setIsSort }) {
+export default function Sort({ setIsSort }) {
 
 
     return (

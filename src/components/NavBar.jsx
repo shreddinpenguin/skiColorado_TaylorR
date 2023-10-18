@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Sort from './Sort'
 import Container from 'react-bootstrap/Container'
 
-export default function NavBar({ allResorts, setIsSort }) {
+export default function NavBar({ setIsSort }) {
     const navigate = useNavigate()
     const selectRef = useRef()
 
@@ -25,7 +25,7 @@ export default function NavBar({ allResorts, setIsSort }) {
                         <option value="epic">Epic</option>
                         <option value="ikon">Ikon</option>
                     </select>
-                    <Sort setIsSort={setIsSort} allResorts={allResorts}/>
+                    <Sort setIsSort={setIsSort} />
                     <button><Link to="/NewMountainForm">New Mountain</Link></button>
                 </Nav>
             </Container>

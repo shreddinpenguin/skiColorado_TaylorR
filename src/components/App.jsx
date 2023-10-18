@@ -38,7 +38,7 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<BaseLayout setIsSort={setIsSort} allResorts={allResorts} />}>
+      <Route path="/" element={<BaseLayout setIsSort={setIsSort} />}>
         <Route index element={<Home isSort={isSort} allResorts={allResorts} />} />
         <Route path="Epic" element={<Epic isSort={isSort} epic={epic} />} />
         <Route path="Ikon" element={<Ikon isSort={isSort} ikon={ikon} />} />
