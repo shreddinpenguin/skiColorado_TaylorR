@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from 'react'
 
-export default function Home() {
+export default function Home({ allResorts, isSort }) {
 
-    const [epic, setEpic] = useState([])
-    const [ikon, setIkon] = useState([])
-    const [allResorts, setAllResorts] = useState([])
-
-    useEffect(()=> {
-        Promise.all([
-            fetch("http://localhost:4000/epicResorts"),
-            fetch("http://localhost:4000/ikonResorts"),
-        ])
-        .then(([resEpic, resIkon]) => 
-            Promise.all([resEpic.json(), resIkon.json()])
-        )
-        .then(([dataEpic, dataIkon])=> {
-            setEpic(dataEpic)
-            setIkon(dataIkon)
-            setAllResorts(dataEpic.concat(dataIkon))
+    const sortChange = allResorts.sort((sort1, sort2) => {
+        if (isSort === "avgSnow") {
+            return sort2.avgSnow - sort1.avgSnow
+        } else if (isSort === "parks") {
+            return sort2.parks - sort1.parks
+        }
+        else if (isSort === "lifts") {
+            return sort2.lifts - sort1.lifts
+        } return null
         })
-    }, [])
-    console.log(allResorts)
 
     const resortItems = allResorts.map((resort) => (
         <li className="card" key={resort.name}>

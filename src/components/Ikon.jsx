@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
 
-export default function Ikon() {
+export default function Ikon({ ikon, isSort }) {
 
-    const [resorts, setResorts] = useState([])
+    const sortChange = ikon.sort((sort1, sort2) => {
+        if (isSort === "avgSnow") {
+            return sort2.avgSnow - sort1.avgSnow
+        } else if (isSort === "parks") {
+            return sort2.parks - sort1.parks
+        }
+        else if (isSort === "lifts") {
+            return sort2.lifts - sort1.lifts
+        } return null
+        })
 
-    useEffect(() => {
-        fetch("http://localhost:4000/ikonResorts")
-        .then(res => res.json())
-        .then((data) => setResorts(data))
-    }, [])
-
-    const resortItems = resorts.map((resort) => (
+    const resortItems = ikon.map((resort) => (
         <li className="card" key={resort.name}>
             <img src={resort.image} alt={resort.name} />
             <h4>{resort.name}</h4>

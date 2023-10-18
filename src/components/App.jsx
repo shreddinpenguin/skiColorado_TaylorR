@@ -9,32 +9,47 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom"
+import NewMountainForm from './NewMountainForm'
 
 function App() {
 
-  // const fetchEpic = async() => {
-  //   const epic = await fetch("http://localhost:4000/epicResorts")
-  //   return epic.json()
-  // }
-  // const fetchIkon = async() => {
-  //   const ikon = await fetch("http://localhost:4000/ikonResorts")
-  //   return ikon.json()
-  // }
+  const [epic, setEpic] = useState([])
+  const [ikon, setIkon] = useState([])
+  const [add, setAdd] = useState([])
+  const [allResorts, setAllResorts] = useState([])
+  const [isSort, setIsSort] = useState("All")
 
-  // const resortLoader = async () => {
-  //   const [fetchEpic, fetchIkon] = await Promise.all([fetchEpic(), fetchIkon()])
-  //   return { fetchEpic, fetchIkon }
-  // }
+  useEffect(()=> {
+    Promise.all([
+        fetch("http://localhost:4000/epicResorts"),
+        fetch("http://localhost:4000/ikonResorts"),
+        fetch("http://localhost:4000/addedResorts"),
+    ])
+    .then(([resEpic, resIkon, resAdd]) => 
+        Promise.all([resEpic.json(), resIkon.json(), resAdd.json()])
+    )
+    .then(([dataEpic, dataIkon, dataAdd])=> {
+        setEpic(dataEpic)
+        setIkon(dataIkon)
+        setAdd(dataAdd)
+        setAllResorts(dataEpic.concat(dataIkon, dataAdd))
+    })
+}, [])
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<BaseLayout />}>
-        <Route index element={<Home />} />
-        <Route path="Epic" element={<Epic />} />
-        <Route path="Ikon" element={<Ikon />} />
+      <Route path="/" element={<BaseLayout setIsSort={setIsSort} allResorts={allResorts} />}>
+        <Route index element={<Home isSort={isSort} allResorts={allResorts} />} />
+        <Route path="Epic" element={<Epic isSort={isSort} epic={epic} />} />
+        <Route path="Ikon" element={<Ikon isSort={isSort} ikon={ikon} />} />
+        <Route path="NewMountainForm" element={<NewMountainForm submit={submit}/>} />
       </Route>
     )
   )
+
+  function submit(newResort){
+    setAllResorts([...allResorts, newResort])
+  }
 
   return (
     <div className='App'>

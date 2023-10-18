@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react'
 
-export default function Epic() {
+export default function Epic({ epic, isSort }) {
 
-    const [resorts, setResorts] = useState([])
+    const sortChange = epic.sort((sort1, sort2) => {
+        if (isSort === "avgSnow") {
+            return sort2.avgSnow - sort1.avgSnow
+        } else if (isSort === "parks") {
+            return sort2.parks - sort1.parks
+        }
+        else if (isSort === "lifts") {
+            return sort2.lifts - sort1.lifts
+        } return null
+        })
 
-    useEffect(() => {
-        fetch("http://localhost:4000/EpicResorts")
-        .then(res => res.json())
-        .then((data) => setResorts(data))
-    }, [])
-
-    const resortItems = resorts.map((resort) => (
+    const resortItems = epic.map((resort) => (
         <li className="card" key={resort.name}>
             <img src={resort.image} alt={resort.name} />
             <h4>{resort.name}</h4>
