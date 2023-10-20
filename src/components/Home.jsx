@@ -1,6 +1,21 @@
 import React, { useEffect, useState } from 'react'
 
-export default function Home({ allResorts, isSort }) {
+export default function Home({ allResorts, isSort, setAllResorts }) {
+
+    function handleDelete(id){
+        const updatedResorts = allResorts.filter(
+          (resort) => resort.id != id
+        );
+        setAllResorts(updatedResorts)
+      }
+    function onDelete(id){
+        fetch(`http://localhost:4000/addedResorts/${id}`, {
+          method: "DELETE"
+        }) 
+        .then(res => res.json())
+        .then(()=> handleDelete(id)) 
+      }
+
 
     const sortChange = allResorts.sort((sort1, sort2) => {
         if (isSort === "avgSnow") {
@@ -20,6 +35,7 @@ export default function Home({ allResorts, isSort }) {
             <p>Average Snowfall: {resort.avgSnow}"</p>
             <p>Parks: {resort.parks}</p>
             <p>Lifts: {resort.lifts}</p>
+            <button onClick={() => onDelete(resort.id)}>Delete</button>
         </li>
     ))
 

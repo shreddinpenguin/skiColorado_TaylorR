@@ -1,6 +1,21 @@
-import { useState, useEffect } from 'react'
+import React from 'react'
 
-export default function Epic({ epic, isSort }) {
+export default function Epic({ epic, isSort, setEpic }) {
+    console.log(epic.id)
+
+    function handleDelete(id){
+        const updatedResorts = epic.filter(
+          (resort) => resort.id != id
+        );
+        setEpic(updatedResorts)
+      }
+    function onDelete(id){
+        fetch(`http://localhost:4000/epicResorts/${id}`, {
+          method: "DELETE"
+        }) 
+        .then(res => res.json())
+        .then(()=> handleDelete(id)) 
+      }
 
     const sortChange = epic.sort((sort1, sort2) => {
         if (isSort === "avgSnow") {
@@ -20,6 +35,7 @@ export default function Epic({ epic, isSort }) {
             <p>Average Snowfall: {resort.avgSnow}"</p>
             <p>Parks: {resort.parks}</p>
             <p>Lifts: {resort.lifts}</p>
+            <button onClick={() => onDelete(resort.id)}>Delete</button>
         </li>
     ))
 

@@ -1,6 +1,21 @@
 import React from 'react'
 
-export default function Ikon({ ikon, isSort }) {
+export default function Ikon({ ikon, isSort, setIkon }) {
+    console.log(ikon.id)
+
+    function handleDelete(id){
+        const updatedResorts = ikon.filter(
+          (resort) => resort.id != id
+        );
+        setIkon(updatedResorts)
+      }
+    function onDelete(id){
+        fetch(`http://localhost:4000/ikonResorts/${id}`, {
+          method: "DELETE"
+        }) 
+        .then(res => res.json())
+        .then(()=> handleDelete(id)) 
+      }
 
     const sortChange = ikon.sort((sort1, sort2) => {
         if (isSort === "avgSnow") {
@@ -20,6 +35,7 @@ export default function Ikon({ ikon, isSort }) {
             <p>Average Snowfall: {resort.avgSnow}"</p>
             <p>Parks: {resort.parks}</p>
             <p>Lifts: {resort.lifts}</p>
+            <button onClick={() => onDelete(resort.id)}>Delete</button>
         </li>
     ))
 

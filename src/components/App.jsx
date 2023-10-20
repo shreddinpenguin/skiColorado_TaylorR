@@ -39,9 +39,9 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<BaseLayout setIsSort={setIsSort} />}>
-        <Route index element={<Home isSort={isSort} allResorts={allResorts} />} />
-        <Route path="Epic" element={<Epic isSort={isSort} epic={epic} />} />
-        <Route path="Ikon" element={<Ikon isSort={isSort} ikon={ikon} />} />
+        <Route index element={<Home setAllResorts={setAllResorts} isSort={isSort} allResorts={allResorts} />} />
+        <Route path="Epic" element={<Epic setEpic={setEpic} isSort={isSort} epic={epic} />} />
+        <Route path="Ikon" element={<Ikon setIkon={setIkon} isSort={isSort} ikon={ikon} />} />
         <Route path="NewMountainForm" element={<NewMountainForm submit={submit}/>} />
       </Route>
     )
@@ -50,7 +50,7 @@ function App() {
   function submit(newResort){
     setAllResorts([...allResorts, newResort])
   }
-
+  
   return (
     <div className='App'>
       <RouterProvider router={router} />
